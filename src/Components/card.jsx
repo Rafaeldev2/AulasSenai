@@ -1,16 +1,18 @@
 import React from 'react';
-import 'card.css'
+import './card.css';
 
-
-const ProductCard = ({ product }) => {
+const ProductCase = ({ recipe, deleteRecipe, fractionalRecipe }) => {
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.name} />
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
-      <button>Add to Cart</button>
+    <div className="recipe-card">
+      <h3>{recipe.title}</h3>
+      <p>Porção atual: para {recipe.currentPortionSize} pessoa(s)</p>
+      <div className="recipe-actions">
+        <button onClick={() => deleteRecipe(recipe.id)}>Excluir</button>
+        <button onClick={() => fractionalRecipe(recipe.id, 0.5)}>Meia Porção</button>
+        <button onClick={() => fractionalRecipe(recipe.id, 2)}>Dobrar Porção</button>
+      </div>
     </div>
   );
 };
-export default ProductCard;
+
+export default ProductCase;
